@@ -8,12 +8,17 @@
       'is-no-asterisk': elForm && elForm.hideRequiredAsterisk
     },
     sizeClass ? 'el-form-item--' + sizeClass : ''
-  ]">
+  ]" :style="{textAlign: textAlignment}">
     <label-wrap
       :is-auto-width="labelStyle && labelStyle.width === 'auto'"
       :update-all="form.labelWidth === 'auto'">
-      <label :for="labelFor" class="el-form-item__label" :style="labelStyle" v-if="label || $slots.label">
-        <slot name="label">{{label + form.labelSuffix}}</slot>
+      <label :for="labelFor" class="el-form-item__label" :style="{...labelStyle,color: fontColor,
+          fontSize: fontSize + 'px',
+          fontWeight: fontWeight ? 'bold' : null,
+          fontStyle: fontStyle ? 'italic' : null,
+          textDecoration: textDecoration ? 'underline' : null,
+          fontFamily: fontFamily}" v-if="label || $slots.label">
+        <slot name="label"><span v-html="label + form.labelSuffix"></span></slot>
       </label>
     </label-wrap>
     <div class="el-form-item__content" :style="contentStyle">
@@ -61,6 +66,21 @@
 
     props: {
       label: String,
+      fontFamily: String,
+      fontColor: {
+        type: String,
+        default: '#000000'
+      },
+      fontSize: Number,
+      fontWeight: Boolean,
+      fontStyle: Boolean,
+      superScript: Boolean,
+      subscript: Boolean,
+      textDecoration: Boolean,
+      textAlignment: {
+        type: String,
+        default: 'left'
+      },
       labelWidth: String,
       prop: String,
       required: {

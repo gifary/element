@@ -38,6 +38,16 @@
         @blur="handleBlur"
         @change="handleChange"
         :aria-label="label"
+        :style="{
+          marginLeft: marginLeft + 'px',
+          marginTop: marginTop + 'px',
+          marginRight: marginRight + 'px',
+          marginBottom: marginBottom + 'px',
+          paddingLeft: paddingLeft + 'px',
+          paddingTop: paddingTop + 'px',
+          paddingRight: paddingRight + 'px',
+          paddingBottom: paddingBottom + 'px'
+        }"
       >
       <!-- 前置内容 -->
       <span class="el-input__prefix" v-if="$slots.prefix || prefixIcon">
@@ -144,6 +154,38 @@
 
     props: {
       value: [String, Number],
+      marginLeft: {
+        type: Number,
+        default: 0
+      },
+      marginRight: {
+        type: Number,
+        default: 0
+      },
+      marginTop: {
+        type: Number,
+        default: 0
+      },
+      marginBottom: {
+        type: Number,
+        default: 0
+      },
+      paddingLeft: {
+        type: Number,
+        default: 10
+      },
+      paddingRight: {
+        type: Number,
+        default: 0
+      },
+      paddingTop: {
+        type: Number,
+        default: 0
+      },
+      paddingBottom: {
+        type: Number,
+        default: 0
+      },
       size: String,
       resize: String,
       form: String,
